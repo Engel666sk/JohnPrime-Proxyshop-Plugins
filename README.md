@@ -1,1 +1,1 @@
-# JohnPrime-Proxyshop-Plugins
+# John Prime-Proxyshop-Plugins
