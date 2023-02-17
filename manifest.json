@@ -1,0 +1,28 @@
+{
+  "Normal": {
+    "WomansdayShort": {
+      "file": "WomansdayShort.psd",
+      "id": "1hBcBparTTCAnckxE7TYPnHgMJRJ53XAo"
+    }
+  },
+  "MDFC Front": {
+    "Borderless MDFC Front": {
+      "file": "BorderlessMDFCFront.psd",
+      "id": "1QY4ERCrWvVRqzgec36r0irXk1yQhjksY"
+    },
+    "Borderless MDFC Back": {
+      "file": "BorderlessMDFCBack.psd",
+      "id": "11o79S91n4qhghwbLIduvIp15pY0Nnlcd"
+    }
+  },
+  "Borderless Transform Front": {
+    "Borderless Transform Front": {
+      "file": "BorderlessTransformFront.psd",
+      "id": ""
+    },
+    "Borderless Transform Back": {
+      "file": "BorderlessTransformBack.psd",
+      "id": ""
+    }
+  }
+},
