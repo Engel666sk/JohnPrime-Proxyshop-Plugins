@@ -7,11 +7,5 @@
 	},
 	"mdfc_back": {
 		"Borderless MDFC": "BorderlessMDFCBackTemplate"
-	},
-	"transform_front": {
-		"Borderless Transform": "BorderlessTransformFrontTemplate"
-	},
-	"transform_back": {
-		"Borderless Transform": "BorderlessTransformBackTemplate"
 	}
 }

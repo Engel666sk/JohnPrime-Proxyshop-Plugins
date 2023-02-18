@@ -15,8 +15,8 @@ import proxyshop.helpers as psd
 
 class WomansdayShortTemplate (temp.NormalTemplate):
     """
-     *Borderless Template by PsilosX
-     *Created by JohnPrime
+     * Womansday Short Template
+     * Created by JohnPrime
     """
     template_file_name = "JohnPrime/WomansdayShort"
     template_suffix = "Womansday Short"
@@ -30,13 +30,10 @@ MDFC TEMPLATES
 class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
     """
     Borderless version of the MDFC Back template
-     *Standard MDFC Template by SilvanMTG
-     *Borderless MDFC Template by PsilosX
-     *Created by JohnPrime
     """
     template_file_name = "JohnPrime/BorderlessMDFCBack"
     dfc_layer_group = con.layers.MDFC_BACK
-    template_suffix = "Borderless MDFC"
+    template_suffix = "Borderless"
 
     def __init__(self, layout):
         cfg.remove_reminder = True
@@ -49,34 +46,10 @@ class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
         psd.content_fill_empty_area(self.art_layer)
 
 
-class BorderlessMDFCFrontTemplate (temp.MDFCFrontTemplate):
+class BorderlessMDFCFrontTemplate (BorderlessMDFCBackTemplate):
     """
     Borderless version of the MDFC Front template
-     *Standard MDFC Template by SilvanMTG
-     *Borderless MDFC Template by PsilosX
-     *Created by JohnPrime
     """
     template_file_name = "JohnPrime/BorderlessMDFCFront"
     dfc_layer_group = con.layers.MDFC_FRONT
-    template_suffix = "Borderless MDFC"
- 
- 
-"""
-Borderless Transform TEMPLATES
-"""
-class BorderlessTransformFrontTemplate (temp.BorderlessTransformFrontTemplate):
-    """
-     *Borderless Transform Template by PsilosX
-     *Created by JohnPrime
-    """
-    template_file_name = "JohnPrime/BorderlessTransformFront"
-    template_suffix = "Borderless Transform"
-
-
-class BorderlessTransformBackTemplate (temp.BorderlessTransformBackTemplate):
-    """
-     *Borderless Transform Template by PsilosX
-     *Created by JohnPrime
-    """
-    template_file_name = "JohnPrime/BorderlessTransformBack"
-    template_suffix = "Borderless Transform"
+    template_suffix = "Borderless"
