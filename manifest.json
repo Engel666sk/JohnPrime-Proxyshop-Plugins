@@ -6,13 +6,13 @@
     }
   },
   "MDFC": {
-    "Silvan Extended Front": {
+    "BorderlessMDFCFront": {
       "file": "BorderlessMDFCFront.psd",
-      "id": ""
+      "id": "1QY4ERCrWvVRqzgec36r0irXk1yQhjksY"
     },
-    "Silvan Extended Back": {
-      "file": "BorderlessMDFCNBack",
-      "id": ""
+    "BorderlessMDFCBack": {
+      "file": "BorderlessMDFCBack.psd",
+      "id": "11o79S91n4qhghwbLIduvIp15pY0Nnlcd"
     }
   }
 }

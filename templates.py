@@ -19,7 +19,7 @@ class WomansdayShortTemplate (temp.NormalTemplate):
      * Created by JohnPrime
     """
     template_file_name = "JohnPrime/WomansdayShort"
-    template_suffix = "Womansday Short"
+    template_suffix = "Showcase"
 
 
 """
@@ -33,7 +33,7 @@ class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
     """
     template_file_name = "JohnPrime/BorderlessMDFCBack"
     dfc_layer_group = con.layers.MDFC_BACK
-    template_suffix = "Borderless"
+    template_suffix = "Showcase"
 
     def __init__(self, layout):
         cfg.remove_reminder = True
@@ -52,4 +52,39 @@ class BorderlessMDFCFrontTemplate (BorderlessMDFCBackTemplate):
     """
     template_file_name = "JohnPrime/BorderlessMDFCFront"
     dfc_layer_group = con.layers.MDFC_FRONT
+    template_suffix = "Showcase"
+
+
+"""
+Double faced card templates
+"""
+
+
+class BorderlessTFBackTemplate (temp.NormalTemplate):
+    """
+    Template for the back faces of transform cards.
+    """
+    template_file_name = "JohnPrime/BorderlessTFBack"
+    dfc_layer_group = con.layers.TF_BACK
+    template_suffix = "Borderless"
+
+    def __init__(self, layout):
+        cfg.remove_reminder = True
+        super().__init__(layout)
+
+    def load_artwork(self):
+        super().load_artwork()
+
+        # Content aware fill
+        psd.content_fill_empty_area(self.art_layer)
+        
+
+
+
+class BorderlessTFFrontTemplate (BorderlessTFBackTemplate):
+    """
+    Template for the front faces of transform cards.
+    """
+    template_file_name = "JohnPrime/BorderlessTFFront"
+    dfc_layer_group = con.layers.TF_FRONT
     template_suffix = "Borderless"
