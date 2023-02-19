@@ -19,7 +19,7 @@ class WomansdayShortTemplate (temp.NormalTemplate):
      * Created by JohnPrime
     """
     template_file_name = "JohnPrime/WomansdayShort"
-    template_suffix = "Showcase"
+    template_suffix = "Showcase Short"
 
 
 """
