@@ -3,6 +3,9 @@ JOHNPRIME TEMPLATES
 """
 import os
 from functools import cached_property
+from typing import Optional
+
+from photoshop.api._artlayer import ArtLayer
 
 import proxyshop.text_layers as text_classes
 from proxyshop.__console__ import console
@@ -13,13 +16,26 @@ from proxyshop.settings import cfg
 import proxyshop.helpers as psd
 
 
-class WomansdayShortTemplate (temp.NormalTemplate):
+class WomensdayShortTemplate (temp.WomensDayTemplate):
     """
      * Womansday Short Template
      * Created by JohnPrime
     """
-    template_file_name = "JohnPrime/WomansdayShort"
+    template_file_name = "JohnPrime/WomensdayShort"
     template_suffix = "Showcase Short"
+
+    def __init__(self, layout):
+        cfg.remove_reminder = True
+        cfg.remove_flavor = True
+        super().__init__(layout)
+
+    @property
+    def is_companion(self) -> bool:
+        return False
+
+    @property
+    def is_nyx(self) -> bool:
+        return False
 
 
 """
@@ -35,9 +51,28 @@ class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
     dfc_layer_group = con.layers.MDFC_BACK
     template_suffix = "Showcase"
 
-    def __init__(self, layout):
-        cfg.remove_reminder = True
-        super().__init__(layout)
+    @property
+    def is_companion(self) -> bool:
+        return False
+
+    @property
+    def is_nyx(self) -> bool:
+        return False
+
+    @cached_property
+    def art_reference_layer(self) -> ArtLayer:
+        # Only Full Art reference
+        return psd.getLayer(con.layers.FULL_ART_FRAME)
+
+    @property
+    def background_layer(self) -> Optional[ArtLayer]:
+        # No backgrounds
+        return
+
+    def enable_crown(self) -> None:
+        # No borders, no nyx, no companion
+        psd.enable_mask(self.pinlines_layer.parent)
+        self.crown_layer.visible = True
 
     def load_artwork(self):
         super().load_artwork()
@@ -60,7 +95,7 @@ Double faced card templates
 """
 
 
-class BorderlessTFBackTemplate (temp.NormalTemplate):
+class BorderlessTFBackTemplate (temp.TransformBackTemplate):
     """
     Template for the back faces of transform cards.
     """
@@ -68,23 +103,94 @@ class BorderlessTFBackTemplate (temp.NormalTemplate):
     dfc_layer_group = con.layers.TF_BACK
     template_suffix = "Borderless"
 
-    def __init__(self, layout):
-        cfg.remove_reminder = True
-        super().__init__(layout)
+    @property
+    def is_companion(self) -> bool:
+        return False
+
+    @property
+    def is_nyx(self) -> bool:
+        return False
+
+    @cached_property
+    def text_layer_name(self) -> Optional[ArtLayer]:
+        # CARD NAME
+        return psd.getLayer(con.layers.NAME, self.text_layers)
+
+    @cached_property
+    def art_reference_layer(self) -> ArtLayer:
+        # Only Full Art reference
+        return psd.getLayer(con.layers.FULL_ART_FRAME)
+
+    @property
+    def background_layer(self) -> Optional[ArtLayer]:
+        # No backgrounds
+        return
+
+    @cached_property
+    def pinlines_layer(self) -> Optional[ArtLayer]:
+        # No land pinlines group
+        return psd.getLayer(self.layout.pinlines, con.layers.PINLINES_TEXTBOX)
+
+    def enable_crown(self) -> None:
+        # No borders, no nyx, no companion
+        psd.enable_mask(self.pinlines_layer.parent)
+        self.crown_layer.visible = True
 
     def load_artwork(self):
         super().load_artwork()
 
         # Content aware fill
         psd.content_fill_empty_area(self.art_layer)
-        
 
 
-
-class BorderlessTFFrontTemplate (BorderlessTFBackTemplate):
+class BorderlessTFFrontTemplate (temp.TransformFrontTemplate):
     """
     Template for the front faces of transform cards.
     """
     template_file_name = "JohnPrime/BorderlessTFFront"
     dfc_layer_group = con.layers.TF_FRONT
     template_suffix = "Borderless"
+
+    @property
+    def is_companion(self) -> bool:
+        return False
+
+    @property
+    def is_nyx(self) -> bool:
+        return False
+
+    @cached_property
+    def text_layer_name(self) -> Optional[ArtLayer]:
+        # CARD NAME
+        return psd.getLayer(con.layers.NAME, self.text_layers)
+
+    @cached_property
+    def art_reference_layer(self) -> ArtLayer:
+        # Only Full Art reference
+        return psd.getLayer(con.layers.FULL_ART_FRAME)
+
+    @property
+    def background_layer(self) -> Optional[ArtLayer]:
+        # No backgrounds
+        return
+
+    @cached_property
+    def pt_layer(self) -> Optional[ArtLayer]:
+        # Group must be turned on if needed
+        if self.is_creature:
+            group = psd.getLayerSet(con.layers.PT_BOX)
+            group.visible = True
+            return psd.getLayer(self.layout.twins, group)
+        return
+
+    def enable_crown(self) -> None:
+        # Crown group must be turned on first
+        self.crown_layer.parent.visible = True
+        psd.enable_mask(self.pinlines_layer.parent)
+        self.crown_layer.visible = True
+
+    def load_artwork(self):
+        super().load_artwork()
+
+        # Content aware fill
+        psd.content_fill_empty_area(self.art_layer)

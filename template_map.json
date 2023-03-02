@@ -1,12 +1,12 @@
 {
     "normal": {
-        "Womansday Short": "WomansdayShortTemplate" 
+        "Womens Day Short": "WomensdayShortTemplate"
     },
     "mdfc_front": {
-		"Borderless MDFC": "BorderlessMDFCFrontTemplate"
+		"Borderless": "BorderlessMDFCFrontTemplate"
 	},
 	"mdfc_back": {
-		"Borderless MDFC": "BorderlessMDFCBackTemplate"
+		"Borderless": "BorderlessMDFCBackTemplate"
 	},
 	"transform_front": {
 		"Borderless": "BorderlessTFFrontTemplate"
@@ -14,5 +14,4 @@
 	"transform_back": {
 		"Borderless": "BorderlessTFBackTemplate"
 	}
-
 }
