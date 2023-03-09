@@ -3,4 +3,3 @@ A custom templates for [Proxyshop](https://github.com/MrTeferi/MTG-Proxyshop) si
 
 # Install instructions
 Drag into the `/plugins/` folder, then grab the [.PSD template(s) from my drive](https://drive.google.com/drive/folders/1L_uG3so5GxyM3CVpFHuZSYsOZOdF6n5W?usp=share_link) and copy them into the /templates/ folder.
-
