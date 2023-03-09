@@ -14,7 +14,7 @@ import src.helpers as psd
 
 class WomensdayShortTemplate (temp.WomensDayTemplate):
     """
-     * Womansday Short Template
+     * Womensday Short Template
      * Created by JohnPrime
     """
     template_file_name = "WomensdayShort"
