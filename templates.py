@@ -17,21 +17,11 @@ class WomensdayShortTemplate (temp.WomensDayTemplate):
      * Womensday Short Template
      * Created by JohnPrime
     """
-    template_file_name = "WomensdayShort"
     template_suffix = "Showcase Short"
 
     def __init__(self, layout):
-        cfg.remove_reminder = True
         cfg.remove_flavor = True
         super().__init__(layout)
-
-    @property
-    def is_companion(self) -> bool:
-        return False
-
-    @property
-    def is_nyx(self) -> bool:
-        return False
 
 
 """
@@ -43,7 +33,6 @@ class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
     """
     Borderless version of the MDFC Back template
     """
-    template_file_name = "BorderlessMDFCBack"
     dfc_layer_group = con.layers.MDFC_BACK
     template_suffix = "Showcase"
 
@@ -81,7 +70,6 @@ class BorderlessMDFCFrontTemplate (BorderlessMDFCBackTemplate):
     """
     Borderless version of the MDFC Front template
     """
-    template_file_name = "BorderlessMDFCFront"
     dfc_layer_group = con.layers.MDFC_FRONT
     template_suffix = "Showcase"
 
@@ -95,7 +83,6 @@ class BorderlessTFBackTemplate (temp.TransformBackTemplate):
     """
     Template for the back faces of transform cards.
     """
-    template_file_name = "BorderlessTFBack"
     dfc_layer_group = con.layers.TF_BACK
     template_suffix = "Borderless"
 
@@ -143,7 +130,6 @@ class BorderlessTFFrontTemplate (temp.TransformFrontTemplate):
     """
     Template for the front faces of transform cards.
     """
-    template_file_name = "BorderlessTFFront"
     dfc_layer_group = con.layers.TF_FRONT
     template_suffix = "Borderless"
 

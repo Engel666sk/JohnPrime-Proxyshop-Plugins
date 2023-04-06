@@ -1,28 +1,37 @@
 {
-  "Normal": {
-    "Womens Day Short": {
-      "file": "WomensdayShort.psd",
-      "id": "1hBcBparTTCAnckxE7TYPnHgMJRJ53XAo"
-    }
-  },
-  "MDFC": {
-    "Borderless Front": {
-      "file": "BorderlessMDFCFront.psd",
-      "id": "1QY4ERCrWvVRqzgec36r0irXk1yQhjksY"
+    "normal": {
+        "Womens Day Short": {
+            "class": "WomensdayShortTemplate",
+            "file": "WomensdayShort.psd",
+            "id": "1hBcBparTTCAnckxE7TYPnHgMJRJ53XAo"
+        }
     },
-    "Borderless Back": {
-      "file": "BorderlessMDFCBack.psd",
-      "id": "11o79S91n4qhghwbLIduvIp15pY0Nnlcd"
-    }
-  },
-  "Transform": {
-    "Borderless Front": {
-      "file": "BorderlessTFFront.psd",
-      "id": "14RrsPwPNqjuFNnhrbB0TFq3jR0JkpS4_"
+    "mdfc_front": {
+        "Borderless": {
+            "class": "BorderlessMDFCFrontTemplate",
+            "file": "BorderlessMDFCFront.psd",
+            "id": "1QY4ERCrWvVRqzgec36r0irXk1yQhjksY"
+        }
     },
-    "Borderless Back": {
-      "file": "BorderlessTFBack.psd",
-      "id": "1IjFukVQ4KlBgRso8_v5dj-bb86egls4Y"
+    "mdfc_back": {
+        "Borderless": {
+            "class": "BorderlessMDFCBackTemplate",
+            "file": "BorderlessMDFCBack.psd",
+            "id": "11o79S91n4qhghwbLIduvIp15pY0Nnlcd"
+        }
+    },
+    "transform_front": {
+        "Borderless": {
+            "class": "BorderlessTFFrontTemplate",
+            "file": "BorderlessTFFront.psd",
+            "id": "14RrsPwPNqjuFNnhrbB0TFq3jR0JkpS4_"
+        }
+    },
+    "transform_back": {
+        "Borderless": {
+            "class": "BorderlessTFBackTemplate",
+            "file": "BorderlessTFBack.psd",
+            "id": "1IjFukVQ4KlBgRso8_v5dj-bb86egls4Y"
+        }
     }
-  }
 }
