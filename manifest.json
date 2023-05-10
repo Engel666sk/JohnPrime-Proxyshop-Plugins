@@ -8,28 +8,28 @@
     },
     "mdfc_front": {
         "Borderless": {
-            "class": "BorderlessMDFCFrontTemplate",
+            "class": "BorderlessMDFCTemplate",
             "file": "BorderlessMDFCFront.psd",
             "id": "1QY4ERCrWvVRqzgec36r0irXk1yQhjksY"
         }
     },
     "mdfc_back": {
         "Borderless": {
-            "class": "BorderlessMDFCBackTemplate",
+            "class": "BorderlessMDFCTemplate",
             "file": "BorderlessMDFCBack.psd",
             "id": "11o79S91n4qhghwbLIduvIp15pY0Nnlcd"
         }
     },
     "transform_front": {
         "Borderless": {
-            "class": "BorderlessTFFrontTemplate",
+            "class": "BorderlessTFTemplate",
             "file": "BorderlessTFFront.psd",
             "id": "14RrsPwPNqjuFNnhrbB0TFq3jR0JkpS4_"
         }
     },
     "transform_back": {
         "Borderless": {
-            "class": "BorderlessTFBackTemplate",
+            "class": "BorderlessTFTemplate",
             "file": "BorderlessTFBack.psd",
             "id": "1IjFukVQ4KlBgRso8_v5dj-bb86egls4Y"
         }

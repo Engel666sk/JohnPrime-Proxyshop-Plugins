@@ -1,15 +1,18 @@
 """
 JOHNPRIME TEMPLATES
 """
+# Standard Library Imports
 from functools import cached_property
 from typing import Optional
 
+# Third Party Imports
 from photoshop.api._artlayer import ArtLayer
 
+# Local Imports
 from src import templates as temp
-from src.constants import con
 from src.settings import cfg
 import src.helpers as psd
+from src.utils.enums_layers import LAYERS
 
 
 class WomensdayShortTemplate (temp.WomensDayTemplate):
@@ -29,11 +32,10 @@ MDFC TEMPLATES
 """
 
 
-class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
+class BorderlessMDFCTemplate (temp.MDFCTemplate):
     """
     Borderless version of the MDFC Back template
     """
-    dfc_layer_group = con.layers.MDFC_BACK
     template_suffix = "Showcase"
 
     @property
@@ -47,7 +49,7 @@ class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
     @cached_property
     def art_reference_layer(self) -> ArtLayer:
         # Only Full Art reference
-        return psd.getLayer(con.layers.FULL_ART_FRAME)
+        return psd.getLayer(LAYERS.FULL_ART_FRAME)
 
     @property
     def background_layer(self) -> Optional[ArtLayer]:
@@ -66,24 +68,15 @@ class BorderlessMDFCBackTemplate (temp.MDFCBackTemplate):
         psd.content_fill_empty_area(self.art_layer)
 
 
-class BorderlessMDFCFrontTemplate (BorderlessMDFCBackTemplate):
-    """
-    Borderless version of the MDFC Front template
-    """
-    dfc_layer_group = con.layers.MDFC_FRONT
-    template_suffix = "Showcase"
-
-
 """
-Double faced card templates
+TRANSFORM TEMPLATES
 """
 
 
-class BorderlessTFBackTemplate (temp.TransformBackTemplate):
+class BorderlessTFTemplate (temp.TransformTemplate):
     """
     Template for the back faces of transform cards.
     """
-    dfc_layer_group = con.layers.TF_BACK
     template_suffix = "Borderless"
 
     @property
@@ -97,12 +90,12 @@ class BorderlessTFBackTemplate (temp.TransformBackTemplate):
     @cached_property
     def text_layer_name(self) -> Optional[ArtLayer]:
         # CARD NAME
-        return psd.getLayer(con.layers.NAME, self.text_layers)
+        return psd.getLayer(LAYERS.NAME, self.text_layers)
 
     @cached_property
     def art_reference_layer(self) -> ArtLayer:
         # Only Full Art reference
-        return psd.getLayer(con.layers.FULL_ART_FRAME)
+        return psd.getLayer(LAYERS.FULL_ART_FRAME)
 
     @property
     def background_layer(self) -> Optional[ArtLayer]:
@@ -112,62 +105,23 @@ class BorderlessTFBackTemplate (temp.TransformBackTemplate):
     @cached_property
     def pinlines_layer(self) -> Optional[ArtLayer]:
         # No land pinlines group
-        return psd.getLayer(self.layout.pinlines, con.layers.PINLINES_TEXTBOX)
-
-    def enable_crown(self) -> None:
-        # No borders, no nyx, no companion
-        psd.enable_mask(self.pinlines_layer.parent)
-        self.crown_layer.visible = True
-
-    def load_artwork(self):
-        super().load_artwork()
-
-        # Content aware fill
-        psd.content_fill_empty_area(self.art_layer)
-
-
-class BorderlessTFFrontTemplate (temp.TransformFrontTemplate):
-    """
-    Template for the front faces of transform cards.
-    """
-    dfc_layer_group = con.layers.TF_FRONT
-    template_suffix = "Borderless"
-
-    @property
-    def is_companion(self) -> bool:
-        return False
-
-    @property
-    def is_nyx(self) -> bool:
-        return False
-
-    @cached_property
-    def text_layer_name(self) -> Optional[ArtLayer]:
-        # CARD NAME
-        return psd.getLayer(con.layers.NAME, self.text_layers)
-
-    @cached_property
-    def art_reference_layer(self) -> ArtLayer:
-        # Only Full Art reference
-        return psd.getLayer(con.layers.FULL_ART_FRAME)
-
-    @property
-    def background_layer(self) -> Optional[ArtLayer]:
-        # No backgrounds
-        return
+        return psd.getLayer(self.layout.pinlines, LAYERS.PINLINES_TEXTBOX)
 
     @cached_property
     def pt_layer(self) -> Optional[ArtLayer]:
         # Group must be turned on if needed
         if self.is_creature:
-            group = psd.getLayerSet(con.layers.PT_BOX)
+            group = psd.getLayerSet(LAYERS.PT_BOX)
             group.visible = True
             return psd.getLayer(self.layout.twins, group)
         return
 
     def enable_crown(self) -> None:
-        # Crown group must be turned on first
-        self.crown_layer.parent.visible = True
+        # Crown group must be turned on first if front face
+        if self.is_front:
+            self.crown_layer.parent.visible = True
+
+        # No borders, no nyx, no companion
         psd.enable_mask(self.pinlines_layer.parent)
         self.crown_layer.visible = True
 
