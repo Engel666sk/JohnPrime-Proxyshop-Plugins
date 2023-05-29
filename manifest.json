@@ -1,9 +1,9 @@
 {
     "normal": {
-        "Womens Day Short": {
-            "class": "WomensdayShortTemplate",
-            "file": "WomensdayShort.psd",
-            "id": "1hBcBparTTCAnckxE7TYPnHgMJRJ53XAo"
+        "Borderless Short": {
+            "class": "BorderlessShortTemplate",
+            "file": "BorderlessShort.psd",
+            "id": "1ZLni_2weDEBH7yfczi2n4RK70GbrDtqK"
         }
     },
     "mdfc_front": {
